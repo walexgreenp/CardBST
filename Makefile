@@ -1,8 +1,3 @@
-# Write your own makefile that generates two executables- the first should be called game
-# (expected output for game is described later). The second should be called tests and must RUN
-# (not just compile) all the test code to unit test your classes and methods
-
-
 CXX_FLAG = --std=c++11 -g
 
 BINARIES = bstTests
