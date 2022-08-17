@@ -1,0 +1,46 @@
+Alice picked matching card c 6
+Bob picked matching card h k
+Alice picked matching card c 8
+Bob picked matching card h 10
+Alice picked matching card c k
+Bob picked matching card h 8
+Alice picked matching card d 3
+Bob picked matching card h 7
+Alice picked matching card d 9
+Bob picked matching card h 6
+Alice picked matching card d j
+Bob picked matching card h 5
+Alice picked matching card d k
+Bob picked matching card h 2
+Alice picked matching card s a
+Bob picked matching card s k
+Alice picked matching card s 10
+Bob picked matching card s j
+
+Alice's cards:
+c a
+c 4
+c 7
+c j
+s 2
+s 5
+s 6
+s 9
+s q
+h 3
+h 4
+h 9
+
+Bob's cards:
+c 5
+c 9
+c 10
+d a
+d 5
+d 8
+d 10
+s 3
+s 4
+s 7
+h a
+h q

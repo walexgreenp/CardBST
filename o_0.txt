@@ -1,0 +1,8 @@
+
+Alice's cards:
+c j
+s 10
+
+Bob's cards:
+c 9
+d 2
