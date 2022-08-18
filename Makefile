@@ -17,11 +17,11 @@ game: main.o cards.o
 
 
 tests: ${BINARIES}
-	./bstTests a0.txt b0.txt
-	./bstTests a1.txt b1.txt
-	./bstTests a2.txt b2.txt
-	./bstTests a3.txt b3.txt
-	./bstTests acards.txt bcards.txt
+	./bstTests txtFiles/a0.txt txtFiles/b0.txt
+	./bstTests txtFiles/a1.txt txtFiles/b1.txt
+	./bstTests txtFiles/a2.txt txtFiles/b2.txt
+	./bstTests txtFiles/a3.txt txtFiles/b3.txt
+	./bstTests txtFiles/acards.txt txtFiles/bcards.txt
 
 bstTests: ${COMMON_OBJECT_FILES}
 	g++ -Wall -Wno-uninitialized ${LDFLAGS} $^ -o $@

@@ -5,3 +5,15 @@
 * Solidified my understanding of BSTs, and when their usage is most efficient.
 * Improved my skills with pointers, and memory allocation/deallocation on the heap.
 * Gained experience with using .txt files, as well as translating data into easier to use values.
+* Wrote my own Makefile to create/delete executable files, object files, and run tests
+
+# How to use
+To run program multiple times with all sample .txt files write:
+```make tests```
+into your command line.
+Feel free to change/add/delete card values to test different values.
+c=club, s=spade, h=heart, d=diamond
+a=ace, j=jack, q=queen, k=king, 2-10=card number
+
+To delete executable and object files, write:
+```make clean```
