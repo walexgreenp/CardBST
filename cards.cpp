@@ -8,7 +8,7 @@
 using std::cout;
 
 // constructor
-Hand::Hand() : root(nullptr) { 
+Hand::Hand() : root(nullptr) {
     
 }
 
@@ -28,32 +28,32 @@ void Hand::clear(Node* n){
 bool Hand::insert(int value) {
     // handle special case of empty tree first
     if (!root) {
-	root = new Node(value);
-	return true;
+    root = new Node(value);
+    return true;
     }
     // otherwise use recursive helper
     return insert(value, root);
 }
 bool Hand::insert(int value, Node *n) {
     if (value == n->info)
-	return false;
+    return false;
     if (value < n->info) {
-	if (n->left)
-	    return insert(value, n->left);
-	else {
-	    n->left = new Node(value);
-	    n->left->parent = n;
-	    return true;
-	}
+    if (n->left)
+        return insert(value, n->left);
+    else {
+        n->left = new Node(value);
+        n->left->parent = n;
+        return true;
+    }
     }
     else {
-	if (n->right)
-	    return insert(value, n->right);
-	else {
-	    n->right = new Node(value);
-	    n->right->parent = n;
-	    return true;
-	}
+    if (n->right)
+        return insert(value, n->right);
+    else {
+        n->right = new Node(value);
+        n->right->parent = n;
+        return true;
+    }
     }
 }
 
@@ -62,9 +62,9 @@ void Hand::printPreOrder() const {
 }
 void Hand::printPreOrder(Node *n) const {
     if (n) {
-	    cout << n->info << " ";
-	    printPreOrder(n->left);
-	    printPreOrder(n->right);
+        cout << n->info << " ";
+        printPreOrder(n->left);
+        printPreOrder(n->right);
     }
 }
 
@@ -84,62 +84,62 @@ string Hand::getOriginalValue(){
    return getOriginalValue(root->info);
 }
 string Hand::getOriginalValue(int n){
-    string returnVal = "";
+    string returnVal = " of ";
     if(n < 150){
-        returnVal.append("c ");
+        returnVal.append("clubs");
         n = n % 100;
     }
     else if(n < 250){
-        returnVal.append("d ");
+        returnVal.append("diamonds");
         n = n % 200;
     }
     else if(n < 350){
-        returnVal.append("s ");
+        returnVal.append("spades");
         n = n % 300;
     }
     else{
-        returnVal.append("h ");
+        returnVal.append("hearts");
         n = n % 400;
     }
 
     if(n == 1){
-        returnVal.append("a");
+        returnVal.insert(0, "Ace");
     }
     else if(n == 2){
-        returnVal.append("2");
+        returnVal.insert(0, "2");
     }
     else if(n==3){
-        returnVal.append("3");
+        returnVal.insert(0, "3");
     }
     else if(n == 4){
-        returnVal.append("4");
+        returnVal.insert(0, "4");
     }
     else if(n == 5){
-        returnVal.append("5");
+        returnVal.insert(0, "5");
     }
     else if(n == 6){
-        returnVal.append("6");
+        returnVal.insert(0, "6");
     }
     else if(n == 7){
-        returnVal.append("7");
+        returnVal.insert(0, "7");
     }
     else if(n == 8){
-        returnVal.append("8");
+        returnVal.insert(0, "8");
     }
     else if (n == 9){
-        returnVal.append("9");
+        returnVal.insert(0, "9");
     }
     else if (n == 10){
-        returnVal.append("10");
+        returnVal.insert(0, "10");
     }
     else if (n == 11){
-        returnVal.append("j");
+        returnVal.insert(0, "Jack");
     }
     else if (n == 12){
-        returnVal.append("q");
+        returnVal.insert(0, "Queen");
     }
     else if (n == 13){
-        returnVal.append("k");
+        returnVal.insert(0, "King");
     }
 
     return returnVal;
@@ -166,26 +166,26 @@ bool Hand::remove(int value){
 
     // 2 Null
     if(currentNode->left == nullptr && currentNode->right == nullptr) {
-        if(parent == nullptr){ 
+        if(parent == nullptr){
             root = nullptr;
         }
-        else if (parent->left == currentNode){ 
+        else if (parent->left == currentNode){
             parent->left = nullptr;
         }else{
             parent->right = nullptr;
         }
         delete currentNode;
-        return true; 
+        return true;
     }
 
     // 1 Null
-    else if(currentNode->left && currentNode->right == nullptr) { 
+    else if(currentNode->left && currentNode->right == nullptr) {
         if(parent == nullptr) {
-            root = currentNode->left; 
+            root = currentNode->left;
             root->parent = nullptr;
         }
         else if(parent->left == currentNode) {
-            parent->left = currentNode->left; 
+            parent->left = currentNode->left;
             currentNode->left->parent = parent;
         }else{
             parent->right = currentNode->left;
@@ -195,8 +195,8 @@ bool Hand::remove(int value){
         return true;
     }
 
-    else if(currentNode->right && currentNode->left == nullptr) { 
-        if(parent == nullptr) { 
+    else if(currentNode->right && currentNode->left == nullptr) {
+        if(parent == nullptr) {
             root = currentNode->right;
             root->parent = nullptr;
         }
@@ -210,7 +210,7 @@ bool Hand::remove(int value){
         }
         delete currentNode;
         return true;
-    } 
+    }
 
     // 2 children
     else {
@@ -221,7 +221,7 @@ bool Hand::remove(int value){
         return true;
     }
 
-    return false; 
+    return false;
 }
 
 Hand::Node* Hand::getPredecessorNode(int value) const{
@@ -233,7 +233,7 @@ Hand::Node* Hand::getPredecessorNode(int value) const{
         return nullptr;
     }
 
-    if(n->left){    
+    if(n->left){
         n = n->left;
         while(n->right){
             n = n->right;

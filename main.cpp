@@ -9,6 +9,7 @@
 using namespace std;
 
 int main(int argv, char** argc){
+  cout << endl<<"START_TEST -------------------- START_TEST" << endl;
   if(argv < 3){
     cout << "Please provide 2 file names" << endl;
     return 1;
@@ -164,46 +165,13 @@ int main(int argv, char** argc){
   }
   cardFile2.close();
 
-  // int currNode1 = hand1.getSmallest();
-  // int temp;
-  // int currNode2 = hand2.getLargest();
-  // bool removedValue = false;
 
 
-  // while(hand1.getSuccessor(currNode1) != 0 || hand2.getPredecessor(currNode2) != 0){
 
-  //   for(int i = 0; i < hand1.count(); i++){
 
-  //     if(hand2.contains(currNode1)){
-  //       cout << "Alice picked matching card " << hand1.getOriginalValue(currNode1) << endl;
-  //       temp = hand1.getSuccessor(currNode1);
-  //       hand1.remove(currNode1);
-  //       hand2.remove(currNode1);
-  //       currNode1 = temp;
-  //       break;
-  //     }
-  //     else{
-  //       currNode1 = hand1.getSuccessor(currNode1);
-  //     }
-  //   }
+  // Second part of program, printing out values
 
-  //   for(int i = 0; i < hand2.count(); i++){
-  //     if(hand1.contains(currNode2)){
-  //       cout << "Bob picked matching card " << hand2.getOriginalValue(currNode2) << endl;
-  //       temp = hand2.getPredecessor(currNode2);
-  //       hand1.remove(currNode2);
-  //       hand2.remove(currNode2);
-  //       currNode2 = temp;
-  //       break;
-  //     }
-  //     else{
-  //       currNode2 = hand2.getSuccessor(currNode2);
-  //     }
-  //   }
-
-  //   currNode1 = hand1.getSmallest();
-  //   currNode2 = hand2.getLargest();
-  // }
+  cout << "Printing cards that are found in both decks:" << endl;
 
   int currNode1 = hand1.getSmallest();
   int currNode2 = hand2.getLargest();
@@ -222,7 +190,7 @@ int main(int argv, char** argc){
 
       // Checks if currNosde1 is in hand 2
       if(hand2.contains(currNode1)) {
-        cout << "Alice picked matching card " << hand1.getOriginalValue(currNode1) << endl;
+        cout << "Alice picked matching card: " << hand1.getOriginalValue(currNode1) << ". Card has been removed from both BST's"<<endl;
         hand1.remove(currNode1);
         hand2.remove(currNode1);
         turn = false;
@@ -249,7 +217,7 @@ int main(int argv, char** argc){
       }
 
       if(hand1.contains(currNode2)) {
-        cout << "Bob picked matching card " << hand2.getOriginalValue(currNode2) << endl;
+        cout << "Bob   picked matching card: " << hand2.getOriginalValue(currNode2)  << ". Card has been removed from both BST's"<< endl;
         hand1.remove(currNode2);
         hand2.remove(currNode2);
         turn = true;
@@ -271,7 +239,7 @@ int main(int argv, char** argc){
 
 
 
-  cout << endl << "Alice's cards:" << endl;
+  cout << endl << "Alice's remaining cards:" << endl;
   currNode1 = hand1.getSmallest();
   while(hand1.getSuccessor(currNode1) != 0){
     cout << hand1.getOriginalValue(currNode1) << endl;
@@ -280,13 +248,13 @@ int main(int argv, char** argc){
   cout << hand1.getOriginalValue(currNode1) << endl;
 
 
-  cout << endl << "Bob's cards:" << endl;
+  cout << endl << "Bob's remaining cards:" << endl;
   currNode2 = hand2.getSmallest();
   while(hand2.getSuccessor(currNode2) != 0){
     cout << hand2.getOriginalValue(currNode2) << endl;
     currNode2 = hand2.getSuccessor(currNode2);
   }
-  cout << hand2.getOriginalValue(currNode2) << endl;
+  cout << hand2.getOriginalValue(currNode2) << endl << "END_TEST ------------------------ END_TEST" << endl<<endl;
 
   
   return 0;
