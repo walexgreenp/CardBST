@@ -1,5 +1,5 @@
 # CardBST
-"Game" simulation. Program reads 2 .txt files, takes data, inserts data into Binary Searh Tree, and compares data. 
+"Game" simulation. Program reads 2 .txt files, takes data, inserts data into Binary Searh Tree, and compares data. The end of program shows the time program took to run using my implementation of the BST class, compared to a basic linear search comparison which I implemented in linearSearchCompare.cpp.
 
 # What I learned
 * Solidified my understanding of BSTs, and when their usage is most efficient.

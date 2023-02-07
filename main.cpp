@@ -1,7 +1,9 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <chrono>
 #include "cards.h"
+#include "linearSearchCompare.cpp"
 
 
 
@@ -17,6 +19,8 @@ int main(int argv, char** argc){
   
   ifstream cardFile1 (argc[1]);
   ifstream cardFile2 (argc[2]);
+  ifstream cardFile1L (argc[1]);
+  ifstream cardFile2L (argc[2]);
   string line;
 
   if (cardFile1.fail() || cardFile2.fail() ){
@@ -24,13 +28,33 @@ int main(int argv, char** argc){
     return 1;
   }
 
+  // Using linear comparison
+  auto startLinear = std::chrono::system_clock::now();
+  vector<string> linA, linB;
+  string linearLine;
+  
+  while (getline (cardFile1L, linearLine) && (linearLine.length() > 0)){
+    linA.push_back(linearLine);
+  }
+
+  while (getline (cardFile2L, linearLine) && (linearLine.length() > 0)){
+    linB.push_back(linearLine);
+  }
+
+  linearSearchCompare(linA, linB);
+
+  auto endLinear = std::chrono::system_clock::now();
+  // Linear comparision done
+
+
+  // Reading File 1
+
+  auto start = std::chrono::system_clock::now();
   Hand hand1, hand2;
   int currNodeValue = 0;
 
 
 
-
-  // Reading File 1
   while (getline (cardFile1, line) && (line.length() > 0)){
 
     // Checking Suit
@@ -254,8 +278,21 @@ int main(int argv, char** argc){
     cout << hand2.getOriginalValue(currNode2) << endl;
     currNode2 = hand2.getSuccessor(currNode2);
   }
-  cout << hand2.getOriginalValue(currNode2) << endl << "END_TEST ------------------------ END_TEST" << endl<<endl;
 
+
+  auto end = std::chrono::system_clock::now();
+
+
+
+
+  cout << hand2.getOriginalValue(currNode2) << endl;
+
+  // Print times
+  cout << endl;
+  cout << chrono::duration_cast<std::chrono::nanoseconds>(end - start).count() << "nanoseconds using BST class." << endl;
+  cout << chrono::duration_cast<std::chrono::nanoseconds>(endLinear - startLinear).count() << "nanoseconds using regular linear search comparisons." << endl;
   
+  cout << "END_TEST ------------------------ END_TEST" << endl<<endl;
+
   return 0;
 }
