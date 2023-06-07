@@ -28,6 +28,17 @@ int main(int argv, char** argc){
     return 1;
   }
 
+
+  // Calculating time it takes to print + get value at an index. To be used in linear search to properly time.
+  vector<string> empty;
+  empty.push_back(" ");
+  auto startT = std::chrono::system_clock::now();
+  cout << "Printing delay:" << empty[0];
+  auto endT = std::chrono::system_clock::now();
+  int printDelay = chrono::duration_cast<std::chrono::nanoseconds>(endT - startT).count();
+  cout << printDelay << "ns." << endl;
+
+
   // Using linear comparison
   auto startLinear = std::chrono::system_clock::now();
   vector<string> linA, linB;
@@ -41,7 +52,7 @@ int main(int argv, char** argc){
     linB.push_back(linearLine);
   }
 
-  linearSearchCompare(linA, linB);
+  linearSearchCompare(linA, linB, printDelay);
 
   auto endLinear = std::chrono::system_clock::now();
   // Linear comparision done

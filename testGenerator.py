@@ -4,19 +4,19 @@ import random
 from collections import OrderedDict
 
 # Reading input for how many test cases wanted.
-print("Write input a number of values for test case (between 1 and 52, max number of cards in a deck)")
+print("Write input a number of values for test case (between 1 and 49)")
 cases = int(input())
 
-# Checking for valid input
-if (cases < 1) or (cases > 52):
+# Checking for valid input.
+if (cases < 1) or (cases > 49):
     print("Invalid input. Terminating program.")
     sys.exit()
 
-# Creating .txt files
+# Creating .txt files.
 aGen = open('txtFiles/aGen.txt', 'w')
 bGen = open('txtFiles/bGen.txt', 'w')
 
-# Setting all values to 1
+# Setting all values to 1.
 a_vals = np.ones((4, 13))
 b_vals = np.ones((4, 13))
 
@@ -41,13 +41,14 @@ for i in range (52-cases):
 
     b_vals[x][y] = -1
 
-
+# Getting and randomizing indices of 1 values, these will be converted to card values.
 a_true = np.argwhere(a_vals == 1)
 b_true = np.argwhere(b_vals == 1)
 
 np.random.shuffle(a_true)
 np.random.shuffle(b_true)
 
+# Converting values to card values, writing to .txt files.
 for idx in a_true:
     # Inserting suit
     if idx[0] == 0:
